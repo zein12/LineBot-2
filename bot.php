@@ -18,7 +18,7 @@ if (!is_null($events['events'])) {
 			
 			$replyToken = $event['replyToken'];
 			
-			$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+			$textMessageBuilder = new TextMessageBuilder('hello');
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			if ($response->isSucceeded()) {
 				echo 'Succeeded!';
