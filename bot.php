@@ -2,6 +2,7 @@
 require_once('./vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 //use LINE\LINEBot;
 //use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 // Get POST body content
 //$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+APzByZ3jnlV259OV13WiCcsBXMftEVvi/OzVdEy8C31CYj4iA6GdPwQ5QCBnrJPKTNC4IcxZlr4bJwIVRAPd1FlWnDG8ThGjHWY4ZIOD1V/DhshZVuUJUv+YfDrLgh6xtgdB04t89/1O/w1cDnyilFU=');
@@ -13,29 +14,16 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
-		switch ($event['type']) {
-			case 'message':
-				$message = $event['message'];
-				switch ($message['type']) {
-					case 'text':
-						$client->replyMessage(array(
-							'replyToken' => $event['replyToken'],
-							'messages' => array(
-								array(
-									'type' => 'text',
-									'text' => $message['text']
-								)
-							)
-						));
-						break;
-					default:
-						error_log("Unsupporeted message type: " . $message['type']);
-						break;
-				}
-				break;
-			default:
-				error_log("Unsupporeted event type: " . $event['type']);
-				break;
+		if ($event['type'] == 'message'){
+			
+			$replyToken = $event['replyToken'];
+			
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+			if ($response->isSucceeded()) {
+				echo 'Succeeded!';
+				return;
+			}
 		}
 	}
 }
