@@ -16,9 +16,8 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
 			$response = $bot->pushMessage($mid, $textMessageBuilder);
+			$response = $bot->pushMessage($mid, $textMessageBuilder);
 		}
 	}
 	
 }
-
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
