@@ -14,10 +14,21 @@ if(!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text'];
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
-			$response = $bot->pushMessage($mid, $textMessageBuilder);
-			$response = $bot->pushMessage($mid, $textMessageBuilder);
+			
+			if(strpos($text, 't') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello!!');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}
+			else if(strpos($text, 'i') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}
+			else{
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}
 		}
-	}
-	
+	}	
 }
