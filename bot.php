@@ -6,16 +6,10 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+A
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b8c914709b35']);
 
 $postdata = file_get_contents("php://input");
-$messages = $bot->createReceivesFromJSON($postdata);
+//$messages = $bot->createReceivesFromJSON($postdata);
 
-if(is_array($messages)) {
-
-	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('helloooo');
-	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
-}
-else{
-	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hi!!');
-	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
-}
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('helloooo');
+$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+print_r($postdata);
