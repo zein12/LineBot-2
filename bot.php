@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 // SDK is installed via composer
 require_once __DIR__ . "/vendor/autoload.php";
 
-//use LINE\LINEBot;
-//use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot;
+use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 
 // Set these
 //$config = [
