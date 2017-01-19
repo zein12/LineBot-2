@@ -1,18 +1,11 @@
 <?php
-// Show all errors for testing
-error_reporting(E_ALL);
+$path = __DIR__ . '/vendor/autoload.php';
+require_once $path;
 
-// SDK is installed via composer
-require_once __DIR__ . "/vendor/autoload.php";
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+APzByZ3jnlV259OV13WiCcsBXMftEVvi/OzVdEy8C31CYj4iA6GdPwQ5QCBnrJPKTNC4IcxZlr4bJwIVRAPd1FlWnDG8ThGjHWY4ZIOD1V/DhshZVuUJUv+YfDrLgh6xtgdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b8c914709b35']);
 
-use LINE\LINEBot;
-use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage('https://api.line.me/v2/bot/message/reply', $textMessageBuilder);
 
-// Set these
-$config = [
-    'channelId' => '1496021296',
-    'channelSecret' => '515995d49d4801e7c580b8c914709b35',
-    'channelMid' => 'Ubb0233685f6c43ad7af9f72476d67f16',
-];
-$sdk = new LINE\LINEBot($config, new LINE\LINEBot\HTTPClient\CurlHTTPClient($config));
-
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
