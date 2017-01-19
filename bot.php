@@ -21,13 +21,21 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}else if(strpos($text, 'image') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg','https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}else if(strpos($text, 'video') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder('https://example.com/original.mp4','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}
-			else{
+			}else if(strpos($text, 'audio') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\AudioMessageBuilder('https://example.com/original.m4a',240000);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}else if(strpos($text, 'location') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder('','',35.65910807942215,139.70372892916203);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}else if(strpos($text, 'sticker') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}else{
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
