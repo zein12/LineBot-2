@@ -15,14 +15,16 @@ if(!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text'];
 			
-			if(strpos($text, 't') !== false){
+			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello!!');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}
-			else if(strpos($text, 'i') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
+			}else if(strpos($text, 'image') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg','https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}else if(strpos($text, 'video') !== false){
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			else{
