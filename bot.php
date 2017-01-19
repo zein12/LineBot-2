@@ -12,7 +12,7 @@ $events = json_decode($postdata, true);
 if(!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			$text = $event['message']['text'];
+			$text = $event['message']->getText();
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
 			$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 		}
