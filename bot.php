@@ -14,9 +14,8 @@ if (!is_null($events['events'])) {
 	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 }
 else{	
-	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($events);
 	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 }
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-print_r($events);
