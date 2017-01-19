@@ -9,13 +9,14 @@ $postdata = file_get_contents("php://input");
 // Parse JSON
 $events = json_decode($postdata, true);
 
-if (!is_null($events['events'])) {
-	foreach ($events['events'] as $event) {
-		
-		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event->getType());
-		$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
-		
-	}
+if (!is_null($events['events'])) {	
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('helloooo');
+	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
+}
+else{	
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
+	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 }
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+print_r($events);
