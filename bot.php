@@ -16,7 +16,7 @@ $config = [
 ];
 $sdk = new LINEBot($config, new CurlHTTPClient($config));
 
-$postdata = @file_get_contents("php://input");
+$postdata = file_get_contents("php://input");
 $messages = $sdk->createReceivesFromJSON($postdata);
 
 // Verify the signature
