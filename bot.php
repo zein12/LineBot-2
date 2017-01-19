@@ -10,11 +10,8 @@ $postdata = file_get_contents("php://input");
 $events = json_decode($postdata, true);
 
 if (!is_null($events['events'])) {	
-	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('helloooo');
-	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
-}
-else{	
-	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($events);
+	$text = $events['events']['message']['text'];
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
 	$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
 }
 
