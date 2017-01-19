@@ -35,10 +35,11 @@ if(!is_null($events['events'])) {
 			}else if(strpos($text, 'sticker') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'tem') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template',('confirm','Are you Sure',(('message','Yes','yes'),('message','No','no'))));
-				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else{
+			}//else if(strpos($text, 'tem') !== false){
+			//	$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template',('confirm','Are you Sure',(('message','Yes','yes'),('message','No','no'))));
+			//	$response = $bot->pushMessage($mid, $MessageBuilder);
+			//}
+			else{
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
