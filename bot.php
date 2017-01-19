@@ -6,14 +6,14 @@ error_reporting(E_ALL);
 require_once __DIR__ . "/vendor/autoload.php";
 
 use LINE\LINEBot;
-use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot\HTTPClient\GuzzleHTTPClient;
 
 // Set these
 $config = [
     'channelId' => 'wzwpbz9tZWCSPDrTFYf+APzByZ3jnlV259OV13WiCcsBXMftEVvi/OzVdEy8C31CYj4iA6GdPwQ5QCBnrJPKTNC4IcxZlr4bJwIVRAPd1FlWnDG8ThGjHWY4ZIOD1V/DhshZVuUJUv+YfDrLgh6xtgdB04t89/1O/w1cDnyilFU=',
     'channelSecret' => '515995d49d4801e7c580b8c914709b35',
 ];
-$sdk = new LINEBot($config, new CurlHTTPClient($config));
+$sdk = new LINEBot($config, new GuzzleHTTPClient($config));
 
 $postdata = @file_get_contents("php://input");
 $messages = $sdk->createReceivesFromJSON($postdata);
