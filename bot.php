@@ -45,7 +45,12 @@ if($signature && $sdk->validateSignature($postdata, $signature)) {
                 // Process other types of LINE messages like image, video, sticker, etc.
             }
         }
-    } // Else, error
+    }else{
+		$result = $sdk->sendText(['555'], '555');
+		if(!$result instanceof LINE\LINEBot\Response\SucceededResponse) {
+			error_log('LINE error: ' . json_encode($result));
+		}
+	}
 } else {
     error_log('LINE signatures didn\'t match');
 }
