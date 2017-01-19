@@ -9,4 +9,5 @@ $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello
 $response = $bot->pushMessage('https://api.line.me/v2/bot/message/reply', $textMessageBuilder);
 
 echo $response->getHTTPStatus() . '/' . $response->getRawBody();
+print_r($response);
 print_r($textMessageBuilder);
