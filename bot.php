@@ -20,7 +20,7 @@ $messages = $sdk->createReceivesFromJSON($postdata);
 
 // Verify the signature
 // REF: http://line.github.io/line-bot-api-doc/en/api/callback/post.html#signature-verification
-$sigheader = 'LineBot';
+$sigheader = 'X-LINE-ChannelSignature';
 // REF: http://stackoverflow.com/a/541450
 $signature = @$_SERVER[ 'HTTP_'.strtoupper(str_replace('-','_',$sigheader)) ];
 if($signature && $sdk->validateSignature($postdata, $signature)) {
@@ -29,20 +29,17 @@ if($signature && $sdk->validateSignature($postdata, $signature)) {
         foreach ($messages as $message) {
             if ($message instanceof LINEBot\Receive\Message\Text) {
                 $text = $message->getText();
-                if ($text == "mid") {
-                    $fromMid = $message->getFromMid();
+                $fromMid = $message->getFromMid();
+				$user = $sdk->getUserProfile($fromMid);
+				$displayName = $user['contacts'][0]['displayName'];
 
-                    // Send the mid back to the sender and check if the message was delivered
-                    $result = $sdk->sendText([$fromMid], 'mid: ' . $fromMid);
-                    if(!$result instanceof LINE\LINEBot\Response\SucceededResponse) {
-                        error_log('LINE error: ' . json_encode($result));
-                    }
-                } else {
-                    $result = $sdk->sendText('555');
-                    if(!$result instanceof LINE\LINEBot\Response\SucceededResponse) {
-                        error_log('LINE error: ' . json_encode($result));
-                    }
-                }
+				$reply = "You are $displayName, and your mid is:\n\n$fromMid";
+
+				// Send the mid back to the sender and check if the message was delivered
+				$result = $sdk->sendText([$fromMid], $reply);
+				if(!$result instanceof LINE\LINEBot\Response\SucceededResponse) {
+					error_log('LINE error: ' . json_encode($result));
+				}
             } else {
                 $result = $sdk->sendText('666');
 				if(!$result instanceof LINE\LINEBot\Response\SucceededResponse) {
