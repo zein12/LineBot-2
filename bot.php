@@ -6,6 +6,6 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+A
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b8c914709b35']);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
+$response = $bot->pushMessage('https://api.line.me/v2/bot/message/reply', $textMessageBuilder);
 
-echo $response->getHTTPStatus() . '/' . $response->getRawBody() . '/' . $textMessageBuilder;
+echo $response->getHTTPStatus() . '/' . $response->getRawBody();
