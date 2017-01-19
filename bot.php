@@ -8,5 +8,4 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 $response = $bot->pushMessage('https://api.line.me/v2/bot/message/reply', $textMessageBuilder);
 
-echo $response->getHTTPStatus() . '/' . $response->getRawBody();
-print_r($bot);
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
