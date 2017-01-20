@@ -65,12 +65,14 @@ class ConfirmTemplateBuilder implements TemplateBuilder
             $actions[] = $actionBuilder->buildTemplateAction();
         }
 
-        $this->template = [
-            'type' => TemplateType::CONFIRM,
-            'text' => $this->text,
-            'actions' => $actions,
+        return[
+            [
+                'type' => TemplateType::CONFIRM,
+                'text' => $this->text,
+                'actions' => $actions,
+            ]
         ];
 
-        return $this->template;
+        //return $this->template;
     }
 }
