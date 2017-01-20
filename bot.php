@@ -53,5 +53,10 @@ if(!is_null($events['events'])) {
 		}
 	}	
 }
-$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
+$Message1 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
+				$Message2 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
+				$ActionTemplate = \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
+				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$ActionTemplate);
+				
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
 print_r($MessageBuilder);
