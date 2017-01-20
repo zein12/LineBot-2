@@ -19,10 +19,8 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = array(
 					'replyToken' => $event['replyToken'],
 					'messages' => array(
-						array(
-							'type' => 'text',
-							'text' => 'this is a confirm template'
-						)
+						'type' => 'text',
+						'text' => 'this is a confirm template'
 					)
 				);
 				/*$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
