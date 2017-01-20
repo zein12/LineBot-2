@@ -56,7 +56,7 @@ if(!is_null($events['events'])) {
 				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
 				$BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','ImageMap',$BaseSize,$Action);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg', 'ImageMap',$BaseSize,$Action);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
