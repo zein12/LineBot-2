@@ -53,11 +53,11 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'img') !== false){
 				$AreaUri = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(0,0,520,1040);
 				$AreaMessage = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
-				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder('https://example.com/',$AreaUri);
+				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder('https://en.wikipedia.org/wiki/Main_Page',$AreaUri);
 				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$AreaMessage);
 				$BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001', 'ImageMap',$BaseSize,$Action);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg', 'ImageMap',$BaseSize,$Action);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
