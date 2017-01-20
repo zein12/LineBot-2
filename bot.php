@@ -41,7 +41,7 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			else{
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank!!');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
