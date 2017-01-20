@@ -51,12 +51,17 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				
 			}
+			if(strpos($text, 'map') !== false){
+				$Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
+				$Action = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
+				
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}
 		}
 	}	
 }
-$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
-$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure?',$Message);
-//$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template.', $Template);
+$Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
+$Action = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
 
-print_r($Template);
+print_r($Action);
