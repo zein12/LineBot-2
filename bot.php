@@ -16,32 +16,33 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello!!');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'image') !== false){
+			}
+			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'video') !== false){
+			}
+			if(strpos($text, 'video') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder('https://example.com/original.mp4','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'audio') !== false){
+			}
+			if(strpos($text, 'audio') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\AudioMessageBuilder('https://example.com/original.m4a',240000);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'location') !== false){
+			}
+			if(strpos($text, 'location') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder('my location','〒150-0002 東京都渋谷区渋谷２丁目２１−１',35.65910807942215,139.70372892916203);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}else if(strpos($text, 'sticker') !== false){
+			}
+			if(strpos($text, 'sticker') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
-			else if(strpos($text, 'tem') !== false){
+			if(strpos($text, 'tem') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure', new \LINE\LINEBot\TemplateActionBuilder(new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes'),new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no'))));
-				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}
-			else{
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Blank');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
