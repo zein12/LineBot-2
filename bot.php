@@ -42,10 +42,10 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'tem') !== false){
-				$Message1 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
-				$Message2 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-				$ActionTemplate = new \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
-				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',[$Message1,$Message2]);
+				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
+				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
+				//$ActionTemplate = new \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
+				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$Message[]);
 				
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
@@ -54,10 +54,9 @@ if(!is_null($events['events'])) {
 		}
 	}	
 }
-$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
-$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-$ActionTemplate = new \LINE\LINEBot\TemplateActionBuilder(new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no'));
+//$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
+//$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
 //$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure?',$Message);
-//$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
+$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', 'confirm');
 
-print_r($ActionTemplate);
+print_r($MessageBuilder);
