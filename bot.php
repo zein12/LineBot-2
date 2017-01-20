@@ -16,7 +16,7 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello...');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
@@ -53,9 +53,10 @@ if(!is_null($events['events'])) {
 			}
 			if(strpos($text, 'map') !== false){
 				$Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
-				$Action = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
+				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
+				$BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','ImageMap',$BaseSize,$Action);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
@@ -64,6 +65,6 @@ if(!is_null($events['events'])) {
 $Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
 $Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
 $BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
-$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','ImageMap',$BaseSize,$Action,'aa');
+$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','ImageMap',$BaseSize,$Action);
 
 print_r($MessageBuilder);
