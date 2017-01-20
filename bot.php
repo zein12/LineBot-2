@@ -44,7 +44,7 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'tem') !== false){
 				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-				$Template[] = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$Message);
+				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$Message);
 				
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
