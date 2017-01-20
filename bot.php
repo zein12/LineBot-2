@@ -55,5 +55,5 @@ if(!is_null($events['events'])) {
 }
 $Message1 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 $Message2 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-$ActionTemplate = \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
-print_r($ActionTemplate);
+$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',[$Message1,$Message2]);
+print_r($Template);
