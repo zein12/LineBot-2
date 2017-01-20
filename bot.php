@@ -26,7 +26,7 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'video') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder('https://example.com/original.mp4','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder('https://example.com/original.mp4','https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'audio') !== false){
@@ -52,13 +52,24 @@ if(!is_null($events['events'])) {
 				
 			}
 			if(strpos($text, 'map') !== false){
-				$Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
-				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
+				$AreaUri = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(0,0,520,1040);
+				$AreaMessage = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
+				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder('https://example.com/',$AreaUri);
+				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$AreaMessage);
 				$BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg', 'ImageMap',$BaseSize,$Action);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001', 'ImageMap',$BaseSize,$Action);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
 	}	
 }
+$AreaUri = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(0,0,520,1040);
+$AreaMessage = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
+$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder('https://example.com/',$AreaUri);
+$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$AreaMessage);
+$BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
+
+$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001', 'ImageMap',$BaseSize,$Action);
+
+print_r($MessageBuilder);
