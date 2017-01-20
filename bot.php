@@ -6,14 +6,9 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+A
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b8c914709b35']);
 $mid = 'Ubb0233685f6c43ad7af9f72476d67f16';
 
-<<<<<<< HEAD
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('Ubb0233685f6c43ad7af9f72476d67f16', $textMessageBuilder);
-=======
 $postdata = file_get_contents("php://input");
 // Parse JSON
 $events = json_decode($postdata, true);
->>>>>>> 96b671ba579ba1aab8e0b8a92da4583bcee5d9e3
 
 if(!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
@@ -61,7 +56,7 @@ if(!is_null($events['events'])) {
 }
 $Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 $Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure?',$Message);
-//$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template.', $Template);
+$Template = new \ConfirmTemplateBuilder('Are you Sure?',$Message);
+$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template.', $Template);
 
 print_r($Template);
