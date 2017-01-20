@@ -74,14 +74,14 @@ class ImagemapMessageBuilder implements MessageBuilder
             $actions[] = $builder->buildImagemapAction();
         }
 
-        return[ [
+        $this->message[] = [
             'type' => MessageType::IMAGEMAP,
             'baseUrl' => $this->baseUrl,
             'altText' => $this->altText,
             'baseSize' => $this->baseSizeBuilder->build(),
             'actions' => $actions,
-        ]];
+        ];
 
-        //return $this->message;
+        return $this->message;
     }
 }
