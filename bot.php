@@ -44,12 +44,12 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'tem') !== false){
 				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 				$Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$Message);
+				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure??',$Message);
 				
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template.', $Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
-			if(strpos($text, 'img') !== false){
+			if(strpos($text, 'map') !== false){
 				$AreaUri = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(0,0,520,1040);
 				$AreaMessage = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
 				$Action[] = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder('https://en.wikipedia.org/wiki/Main_Page/',$AreaUri);
