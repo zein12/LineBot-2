@@ -64,6 +64,6 @@ if(!is_null($events['events'])) {
 $Area = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(520,0,520,1040);
 $Action = new \LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder('hello',$Area);
 $BaseSize = new \LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder(1040,1040);
-$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','Image Map',$BaseSize,$Action);
+//$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder('https://example.com/bot/images/rm001','Image Map',$BaseSize,$Action);
 
-print_r($MessageBuilder);
+print_r($BaseSize);
