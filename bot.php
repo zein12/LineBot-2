@@ -47,8 +47,7 @@ if(!is_null($events['events'])) {
 				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',$Message);
 				
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
-				
+				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'img') !== false){
 				$AreaUri = new \LINE\LINEBot\ImagemapActionBuilder\AreaBuilder(0,0,520,1040);
