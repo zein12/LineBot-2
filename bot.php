@@ -16,9 +16,18 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
+				$MessageBuilder = array(
+					'replyToken' => $event['replyToken'],
+					'messages' => array(
+						array(
+							'type' => 'text',
+							'text' => 'this is a confirm template'
+						)
+					)
+				);
+				/*$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello.');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
+				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');*/
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
@@ -49,6 +58,34 @@ if(!is_null($events['events'])) {
 				
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
+				
+				/*$MessageArray = array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+								'template' => array(
+									array(
+										'type' => 'confirm',
+										'text' => 'Are you sure?',
+										'actions' => array(
+											array(
+												'type' => 'message',
+												'label' => 'Yes',
+												'text' => 'yes'
+											)
+											array(
+												'type' => 'message',
+												'label' => 'No',
+												'text' => 'no'
+											)
+										)
+									)
+								)
+                            )
+						)
+                    );*/
 			}
 		}
 	}	
