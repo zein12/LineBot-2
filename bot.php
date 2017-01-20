@@ -44,7 +44,7 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'tem') !== false){
 				$Message1 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 				$Message2 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-				$ActionTemplate = \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
+				$ActionTemplate = new \LINE\LINEBot\TemplateActionBuilder($Message1,$Message2);
 				$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure',[$Message1,$Message2]);
 				
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
@@ -56,7 +56,7 @@ if(!is_null($events['events'])) {
 }
 $Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
 $Message[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('No','no');
-$ActionTemplate = \LINE\LINEBot\TemplateActionBuilder($Message);
+$ActionTemplate = new \LINE\LINEBot\TemplateActionBuilder($Message);
 //$Template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Are you Sure?',$Message);
 //$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this is a confirm template', $Template);
 
