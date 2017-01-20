@@ -53,3 +53,6 @@ if(!is_null($events['events'])) {
 		}
 	}	
 }
+$Message1 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Yes','yes');
+
+print_r($Message1);
