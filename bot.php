@@ -63,9 +63,9 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'location') !== false){
 				$MessageBuilder = new LocationMessageBuilder(
 					'my location',
-					'〒150-0002 東京都渋谷区渋谷２丁目２１−１',
-					35.65910807942215,
-					139.70372892916203
+					'Tokyo Shibuya',
+					35.6566285,
+					139.6999638
 				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
