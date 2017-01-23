@@ -43,11 +43,17 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
-				$MessageBuilder = new ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
+				$MessageBuilder = new ImageMessageBuilder(
+					'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg',
+					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg'
+				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'video') !== false){
-				$MessageBuilder = new VideoMessageBuilder('https://example.com/original.mp4','https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg');
+				$MessageBuilder = new VideoMessageBuilder(
+					'https://example.com/original.mp4',
+					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg'
+				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'audio') !== false){
@@ -55,7 +61,12 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'location') !== false){
-				$MessageBuilder = new LocationMessageBuilder('my location','〒150-0002 東京都渋谷区渋谷２丁目２１−１',35.65910807942215,139.70372892916203);
+				$MessageBuilder = new LocationMessageBuilder(
+					'my location',
+					'〒150-0002 東京都渋谷区渋谷２丁目２１−１',
+					35.65910807942215,
+					139.70372892916203
+				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'sticker') !== false){
@@ -90,7 +101,12 @@ if(!is_null($events['events'])) {
 				$Action[] = new ImagemapMessageActionBuilder('hello',$AreaMessage);
 				$BaseSize = new BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg', 'ImageMap',$BaseSize,$Action);
+				$MessageBuilder = new ImagemapMessageBuilder(
+					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg',
+					'ImageMap',
+					$BaseSize,
+					$Action
+				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
