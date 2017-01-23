@@ -81,9 +81,9 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TemplateMessageBuilder(
 					'alt test',
 					new ButtonTemplateBuilder(
+						'https://example.com/thumbnail.jpg',
 						'button title',
 						'button button',
-						'https://example.com/thumbnail.jpg',
 						[
 							new PostbackTemplateActionBuilder('postback label', 'post=back'),
 							new MessageTemplateActionBuilder('message label', 'test message'),
