@@ -14,12 +14,12 @@ if(!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text'];
-			$replyToken = $event['replyToken'];
+			
 			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello...');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg','https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg');
