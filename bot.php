@@ -80,3 +80,6 @@ if(!is_null($events['events'])) {
 		}
 	}	
 }
+$MessageBuilder = new TextMessageBuilder('Hello');
+
+print_r($MessageBuilder);
