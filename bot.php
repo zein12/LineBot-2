@@ -35,7 +35,7 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello...');
+				$MessageBuilder = new TextMessageBuilder('Hello.');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new TextMessageBuilder('How are you?');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
@@ -84,11 +84,11 @@ if(!is_null($events['events'])) {
 					[
 						new ImagemapUriActionBuilder(
 							'https://en.wikipedia.org/wiki/Main_Page/',
-							new AreaBuilder(0, 0, 520, 1040)
+							new AreaBuilder(0, 0, 1040, 520)
 						),
 						new ImagemapMessageActionBuilder(
 							'Fortune',
-							new AreaBuilder(520,0,520,1040)
+							new AreaBuilder(0, 520, 1040, 520)
 						),
 					]
 				);
