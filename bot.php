@@ -61,37 +61,11 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'tem') !== false){
-				/*$message = new LINEBot\MessageBuilder\TemplateMessageBuilder(
-					'alt test',
-					new ButtonTemplateBuilder(
-						'button title',
-						'button button',
-						'https://example.com/thumbnail.jpg',
-						[
-							new PostbackTemplateActionBuilder('postback label', 'post=back'),
-							new MessageTemplateActionBuilder('message label', 'test message'),
-							new UriTemplateActionBuilder('uri label', 'https://example.com'),
-						]
-					)
-				);
 				$Message[] = new MessageTemplateActionBuilder('Yes','yes');
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
-				$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.',$Template);*/
 				
-				$MessageBuilder = new TemplateMessageBuilder(
-					'alt test',
-					new ButtonTemplateBuilder(
-						'https://example.com/thumbnail.jpg',
-						'button title',
-						'button button',
-						[
-							new PostbackTemplateActionBuilder('postback label', 'post=back'),
-							new MessageTemplateActionBuilder('message label', 'test message'),
-							new UriTemplateActionBuilder('uri label', 'https://example.com'),
-						]
-					)
-				);
+				$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.',$Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
