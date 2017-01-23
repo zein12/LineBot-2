@@ -71,8 +71,7 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
-				$Message[] = new PostbackTemplateActionBuilder('postback label', 'post=back');
-				$Message[] = new MessageTemplateActionBuilder('message label', 'test message');
+				$Message[] = new PostbackTemplateActionBuilder('buy', 'action=buy&itemid=123');
 				$Message[] = new UriTemplateActionBuilder('uri label', 'https://example.com');
 				$Template = new ButtonTemplateBuilder(
 					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg',
