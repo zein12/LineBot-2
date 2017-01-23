@@ -1,4 +1,7 @@
 <?php
+use LINE\LINEBot\MessageBuilder;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
 
@@ -16,9 +19,9 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Hello...');
+				$MessageBuilder = new TextMessageBuilder('Hello');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
-				$MessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('How are you??');
+				$MessageBuilder = new TextMessageBuilder('How are you?');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
