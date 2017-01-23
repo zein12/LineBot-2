@@ -10,6 +10,6 @@ $Message[] = new MessageTemplateActionBuilder('Yes','yes');
 $Message[] = new MessageTemplateActionBuilder('No','no');
 $Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
 
-$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.', $Template);
+$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.', new ConfirmTemplateBuilder('Are you Sure??',$Message));
 
 print_r($MessageBuilder);
