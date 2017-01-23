@@ -35,7 +35,7 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello.');
+				$MessageBuilder = new TextMessageBuilder('Hello...');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 				$MessageBuilder = new TextMessageBuilder('How are you?');
 				$response = $bot->pushMessage($mid, $MessageBuilder);
@@ -65,7 +65,7 @@ if(!is_null($events['events'])) {
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
 				
-				$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.',$Template);
+				$MessageBuilder = new TemplateMessageBuilder('confirm template.',$Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
