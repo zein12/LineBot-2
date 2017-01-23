@@ -81,7 +81,7 @@ if(!is_null($events['events'])) {
 					$Message
 				);
 				
-				$MessageBuilder = new TemplateMessageBuilder('confirm template.',$Template);
+				$MessageBuilder = new TemplateMessageBuilder('button template.',$Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
