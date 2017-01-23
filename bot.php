@@ -69,29 +69,13 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
-				/*$AreaUri = new AreaBuilder(0,0,520,1040);
+				$AreaUri = new AreaBuilder(0,0,520,1040);
 				$AreaMessage = new AreaBuilder(520,0,520,1040);
 				$Action[] = new ImagemapUriActionBuilder('https://en.wikipedia.org/wiki/Main_Page/',$AreaUri);
 				$Action[] = new ImagemapMessageActionBuilder('hello',$AreaMessage);
 				$BaseSize = new BaseSizeBuilder(1040,1040);
 				
-				$MessageBuilder = new ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg', 'ImageMap',$BaseSize,$Action);*/
-				
-				$MessageBuilder =  new ImagemapMessageBuilder(
-					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg',
-					'alt test',
-					new BaseSizeBuilder(1040, 1040),
-					[
-						new ImagemapUriActionBuilder(
-							'https://en.wikipedia.org/wiki/Main_Page/',
-							new AreaBuilder(0, 0, 1040, 520)
-						),
-						new ImagemapMessageActionBuilder(
-							'Fortune',
-							new AreaBuilder(0, 520, 1040, 520)
-						),
-					]
-				);
+				$MessageBuilder = new ImagemapMessageBuilder('https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg', 'ImageMap',$BaseSize,$Action);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 		}
