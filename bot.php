@@ -12,6 +12,8 @@ use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
+use LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
+use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
 use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder;
@@ -60,10 +62,24 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new StickerMessageBuilder(1,1);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
-			if(strpos($text, 'tem') !== false){
+			if(strpos($text, 'confirm') !== false){
 				$Message[] = new MessageTemplateActionBuilder('Yes','yes');
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
+				
+				$MessageBuilder = new TemplateMessageBuilder('confirm template.',$Template);
+				$response = $bot->pushMessage($mid, $MessageBuilder);				
+			}
+			if(strpos($text, 'button') !== false){
+				$Message[] = new PostbackTemplateActionBuilder('postback label', 'post=back'),
+				$Message[] = new MessageTemplateActionBuilder('message label', 'test message'),
+				$Message[] = new UriTemplateActionBuilder('uri label', 'https://example.com'),
+				$Template = new ButtonTemplateBuilder(
+					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg',
+					'template title',
+					'button template',
+					$Message
+				);
 				
 				$MessageBuilder = new TemplateMessageBuilder('confirm template.',$Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
