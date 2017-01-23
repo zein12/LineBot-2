@@ -80,6 +80,10 @@ if(!is_null($events['events'])) {
 		}
 	}	
 }
-$MessageBuilder = new TextMessageBuilder('Hello');
+$Message[] = new MessageTemplateActionBuilder('Yes','yes');
+$Message[] = new MessageTemplateActionBuilder('No','no');
+$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
+
+$MessageBuilder = new TemplateMessageBuilder('this is a confirm template.', $Template);
 
 print_r($MessageBuilder);
