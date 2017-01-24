@@ -82,8 +82,9 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
-				$Message[] = new PostbackTemplateActionBuilder('buy', 'action=buy&itemid=123');
-				$Message[] = new UriTemplateActionBuilder('uri label', 'https://example.com');
+				$Message[] = new PostbackTemplateActionBuilder('Buy', 'action=buy&itemid=123');
+				$Message[] = new PostbackTemplateActionBuilder('Add', 'action=add&itemid=123');
+				$Message[] = new UriTemplateActionBuilder('Detail', 'http://example.com/page/123');
 				$Template = new ButtonTemplateBuilder(
 					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg',
 					'template title',
