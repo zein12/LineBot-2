@@ -78,7 +78,7 @@ if(!is_null($events['events'])) {
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
 				
-				$MessageBuilder = new TemplateMessageBuilder('confirm template.',$Template);
+				$MessageBuilder = new TemplateMessageBuilder('please confirm on your smartphone.',$Template);
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
@@ -98,12 +98,12 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'map') !== false){
 				$AreaUri = new AreaBuilder(0,0,520,1040);
 				$AreaMessage = new AreaBuilder(520,0,520,1040);
-				$Action[] = new ImagemapUriActionBuilder('https://en.wikipedia.org/wiki/Main_Page/',$AreaUri);
+				$Action[] = new ImagemapUriActionBuilder('https://example.com/',$AreaUri);
 				$Action[] = new ImagemapMessageActionBuilder('hello',$AreaMessage);
 				$BaseSize = new BaseSizeBuilder(1040,1040);
 				
 				$MessageBuilder = new ImagemapMessageBuilder(
-					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg',
+					'https://example.com/bot/images/rm001',
 					'ImageMap',
 					$BaseSize,
 					$Action
