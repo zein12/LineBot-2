@@ -96,7 +96,7 @@ if(!is_null($events['events'])) {
 				$response = $bot->pushMessage($mid, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
-				$AreaUri = new AreaBuilder(0,0,520,1040);
+				/*$AreaUri = new AreaBuilder(0,0,520,1040);
 				$AreaMessage = new AreaBuilder(520,0,520,1040);
 				$Action[] = new ImagemapUriActionBuilder('https://example.com/',$AreaUri);
 				$Action[] = new ImagemapMessageActionBuilder('hello',$AreaMessage);
@@ -107,6 +107,22 @@ if(!is_null($events['events'])) {
 					'ImageMap',
 					$BaseSize,
 					$Action
+				);*/
+				
+				$MessageBuilder = new ImagemapMessageBuilder(
+					'https://example.com/imagemap_base',
+					'alt test',
+					new BaseSizeBuilder(1040, 1040),
+					[
+						new ImagemapUriActionBuilder(
+							'https://example.com/foo/bar',
+							new AreaBuilder(0, 0, 1040, 520)
+						),
+						new ImagemapMessageActionBuilder(
+							'hello',
+							new AreaBuilder(0, 520, 1040, 520)
+						),
+					]
 				);
 				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
