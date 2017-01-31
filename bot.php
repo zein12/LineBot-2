@@ -25,7 +25,7 @@ require_once $path;
 
 $httpClient = new CurlHTTPClient('7d/5ZTMP4E4lxZDhsIeUFlZrD1I38QFKdZC8V6uBg5Sb4pQ1zbc5KaKbrjnz3XjlKqr2uNyWIObJD92hU0yaLO6AslpPjDyjN258d4oRcwyHP9WsAoEULfZEYr5qhewphqLCr37ewhMUtuIhs1F+twdB04t89/1O/w1cDnyilFU=');
 $bot = new LINEBot($httpClient, ['channelSecret' => 'a787beedee0c166ef92af739d47143e4']);
-$mid = '1498968134';
+$mid = 'uceeae02aa9b37b1d5347b006dae6ab3a';
 
 $postdata = file_get_contents("php://input");
 // Parse JSON
