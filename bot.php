@@ -37,8 +37,12 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			$replyToken = $event['replyToken'];
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello...');
+				$MessageBuilder = new TextMessageBuilder('Hello');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+			}
+			else{
+				$MessageBuilder = new TextMessageBuilder('How are you?');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
 			}
 			
 			/*
