@@ -23,9 +23,10 @@ use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
 
-$httpClient = new CurlHTTPClient('wzwpbz9tZWCSPDrTFYf+APzByZ3jnlV259OV13WiCcsBXMftEVvi/OzVdEy8C31CYj4iA6GdPwQ5QCBnrJPKTNC4IcxZlr4bJwIVRAPd1FlWnDG8ThGjHWY4ZIOD1V/DhshZVuUJUv+YfDrLgh6xtgdB04t89/1O/w1cDnyilFU=');
-$bot = new LINEBot($httpClient, ['channelSecret' => '515995d49d4801e7c580b8c914709b35']);
-$mid = 'Ubb0233685f6c43ad7af9f72476d67f16';
+$httpClient = new CurlHTTPClient('7d/5ZTMP4E4lxZDhsIeUFlZrD1I38QFKdZC8V6uBg5Sb4pQ1zbc5KaKbrjnz3XjlKqr2uNyWIObJD92hU0yaLO6AslpPjDyjN258d4oRcwyHP9WsAoEULfZEYr5qhewphqLCr37ewhMUtuIhs1F+twdB04t89/1O/w1cDnyilFU=');
+$bot = new LINEBot($httpClient, ['channelSecret' => '	
+a787beedee0c166ef92af739d47143e4']);
+$mid = '1498968134';
 
 $postdata = file_get_contents("php://input");
 // Parse JSON
