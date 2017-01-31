@@ -36,39 +36,30 @@ if(!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text'];
 			$replyToken = $event['replyToken'];
-			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
-			}
-			else{
-				$MessageBuilder = new TextMessageBuilder('How are you?');
-				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}
 			
-			/*
 			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 				$MessageBuilder = new TextMessageBuilder('How are you?');
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
 					'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg',
 					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg'
 				);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'video') !== false){
 				$MessageBuilder = new VideoMessageBuilder(
 					'https://example.com/original.mp4',
 					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg'
 				);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'audio') !== false){
 				$MessageBuilder = new AudioMessageBuilder('https://example.com/original.m4a',240000);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'location') !== false){
 				$MessageBuilder = new LocationMessageBuilder(
@@ -77,11 +68,11 @@ if(!is_null($events['events'])) {
 					35.6566285,
 					139.6999638
 				);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'sticker') !== false){
 				$MessageBuilder = new StickerMessageBuilder(1,1);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'confirm') !== false){
 				$Message[] = new MessageTemplateActionBuilder('Yes','yes');
@@ -89,7 +80,7 @@ if(!is_null($events['events'])) {
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
 				
 				$MessageBuilder = new TemplateMessageBuilder('please confirm on your smartphone.',$Template);
-				$response = $bot->pushMessage($mid, $MessageBuilder);				
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
 				$Message[] = new PostbackTemplateActionBuilder('Buy', 'action=buy&itemid=123');
@@ -103,7 +94,7 @@ if(!is_null($events['events'])) {
 				);
 				
 				$MessageBuilder = new TemplateMessageBuilder('button template.',$Template);
-				$response = $bot->pushMessage($mid, $MessageBuilder);				
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
 				$AreaUri = new AreaBuilder(0,0,520,1040);
@@ -118,8 +109,8 @@ if(!is_null($events['events'])) {
 					$BaseSize,
 					$Action
 				);
-				$response = $bot->pushMessage($mid, $MessageBuilder);
-			}*/
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+			}
 		}
 	}	
 }echo 'OK';
