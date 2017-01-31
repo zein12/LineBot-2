@@ -23,8 +23,6 @@ use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
 
-$access_token = '7d/5ZTMP4E4lxZDhsIeUFlZrD1I38QFKdZC8V6uBg5Sb4pQ1zbc5KaKbrjnz3XjlKqr2uNyWIObJD92hU0yaLO6AslpPjDyjN258d4oRcwyHP9WsAoEULfZEYr5qhewphqLCr37ewhMUtuIhs1F+twdB04t89/1O/w1cDnyilFU=';
-
 $httpClient = new CurlHTTPClient('7d/5ZTMP4E4lxZDhsIeUFlZrD1I38QFKdZC8V6uBg5Sb4pQ1zbc5KaKbrjnz3XjlKqr2uNyWIObJD92hU0yaLO6AslpPjDyjN258d4oRcwyHP9WsAoEULfZEYr5qhewphqLCr37ewhMUtuIhs1F+twdB04t89/1O/w1cDnyilFU=');
 $bot = new LINEBot($httpClient, ['channelSecret' => 'a787beedee0c166ef92af739d47143e4']);
 $mid = 'uceeae02aa9b37b1d5347b006dae6ab3a';
@@ -37,9 +35,10 @@ if(!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text'];
+			$replyToken = $event['replyToken'];
 			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
-				$response = $bot->replyMessage($access_token, $MessageBuilder);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			
 			/*
