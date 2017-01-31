@@ -40,8 +40,6 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
-				$MessageBuilder = new TextMessageBuilder('How are you?');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
@@ -104,10 +102,7 @@ if(!is_null($events['events'])) {
 				$BaseSize = new BaseSizeBuilder(1040,1040);
 				
 				$MessageBuilder = new ImagemapMessageBuilder(
-					'https://example.com/bot/images/rm001',
-					'ImageMap',
-					$BaseSize,
-					$Action
+					'https://example.com/bot/images/rm001', 'ImageMap', $BaseSize, $Action
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
