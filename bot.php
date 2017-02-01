@@ -19,7 +19,7 @@ use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
-use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+//use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
 
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
@@ -40,8 +40,7 @@ if(!is_null($events['events'])) {
 			
 			if(strpos($text, 'text') !== false){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
-				$a = new TextMessageBuilder('555');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder, $a);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
@@ -106,11 +105,6 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new ImagemapMessageBuilder(
 					'https://example.com/bot/images/rm001', 'ImageMap', $BaseSize, $Action
 				);
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
-			}
-			if(strpos($text, 'multi') !== false){
-				$MessageBuilder[] = (new MultiMessageBuilder())->add(new TextMessageBuilder('text1', 'text2'))
-                ->add(new AudioMessageBuilder('https://example.com/audio.mp4', 1000))
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 		}
