@@ -39,7 +39,7 @@ if(!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello.','Hi!');
+				$MessageBuilder = new TextMessageBuilder('Hello!');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
@@ -96,17 +96,20 @@ if(!is_null($events['events'])) {
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
-				$AreaUri = new AreaBuilder(0,0,520,1040);
-				$AreaMessage = new AreaBuilder(520,0,520,1040);
-				$Action[] = new ImagemapUriActionBuilder('https://example.com/',$AreaUri);
-				$Action[] = new ImagemapMessageActionBuilder('hello',$AreaMessage);
-				$BaseSize = new BaseSizeBuilder(1040,1040);
+				$AreaUri = new AreaBuilder(0, 0, 1040, 520);
+				$AreaMessage = new AreaBuilder(0, 520, 1040, 520);
+				$Action1 = new ImagemapUriActionBuilder('https://example.com/foo/bar',$AreaUri);
+				$Action2 = new ImagemapMessageActionBuilder('Fortune',$AreaMessage);
+				$BaseSize = new BaseSizeBuilder(1040, 1040);
 				
 				$MessageBuilder = new ImagemapMessageBuilder(
-					'https://example.com/bot/images/rm001', 'ImageMap', $BaseSize, $Action
+					'https://example.com/bot/images/rm001',
+					'alt test',
+					$BaseSize,
+					[$Action1,$Action2]
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
-			}
+			}			
 			if(strpos($text, 'multi') !== false){
 				$MessageBuilder = (new MultiMessageBuilder())
 					->add(new TextMessageBuilder('text1', 'text2'))
