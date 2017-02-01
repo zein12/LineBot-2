@@ -44,6 +44,10 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TextMessageBuilder('Hello!');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
+			if(strpos($text, 'push') !== false){
+				$MessageBuilder = new TextMessageBuilder('Hello!');
+				$response = $bot->pushMessage($mid, $MessageBuilder);
+			}
 			if(strpos($text, 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
 					'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg',
