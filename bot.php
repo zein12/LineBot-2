@@ -19,7 +19,7 @@ use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
 use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
-//use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
 
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
@@ -39,7 +39,7 @@ if(!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello...');
+				$MessageBuilder = new TextMessageBuilder('Hello.','Hi!');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
@@ -105,6 +105,10 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new ImagemapMessageBuilder(
 					'https://example.com/bot/images/rm001', 'ImageMap', $BaseSize, $Action
 				);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+			}
+			if(strpos($text, 'multi') !== false){
+				$MessageBuilder = new TextMessageBuilder('Hello.','Hi!');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 		}
