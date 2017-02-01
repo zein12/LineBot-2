@@ -82,9 +82,9 @@ if(!is_null($events['events'])) {
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
-				$Message1 = new PostbackTemplateActionBuilder('Buy', 'action=buy&itemid=123');
-				$Message2 = new PostbackTemplateActionBuilder('Add', 'action=add&itemid=123');
-				$Message3 = new UriTemplateActionBuilder('Detail', 'http://example.com/page/123');
+				$Message1 = new PostbackTemplateActionBuilder('Postback', 'post=back');
+				$Message2 = new MessageTemplateActionBuilder('message label', 'test message');
+				$Message3 = new UriTemplateActionBuilder('Detail', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
 				$Template = new ButtonTemplateBuilder(
 					'template title',
 					'button template',
