@@ -108,7 +108,9 @@ if(!is_null($events['events'])) {
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'multi') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello.','Hi!');
+				$MessageBuilder = (new MultiMessageBuilder())
+					->add(new TextMessageBuilder('text1', 'text2'))
+					->add(new AudioMessageBuilder('https://example.com/audio.mp4', 1000));
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 		}
