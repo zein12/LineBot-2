@@ -40,7 +40,7 @@ if(!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello!');
+				$MessageBuilder = new TextMessageBuilder('Hello!!!');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
@@ -123,7 +123,7 @@ if(!is_null($events['events'])) {
 			if(strpos($text, 'map') !== false){
 				$AreaUri = new AreaBuilder(0, 0, 1040, 520);
 				$AreaMessage = new AreaBuilder(0, 520, 1040, 520);
-				$Action1 = new ImagemapUriActionBuilder('https://example.com/foo/bar',$AreaUri);
+				$Action1 = new ImagemapUriActionBuilder('https://pixabay.com/en/background-frame-food-kitchen-cook-1932466/',$AreaUri);
 				$Action2 = new ImagemapMessageActionBuilder('Fortune',$AreaMessage);
 				$BaseSize = new BaseSizeBuilder(1040, 1040);
 				
