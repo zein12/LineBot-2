@@ -128,7 +128,7 @@ if(!is_null($events['events'])) {
 				$BaseSize = new BaseSizeBuilder(1040, 1040);
 				
 				$MessageBuilder = new ImagemapMessageBuilder(
-					'https://example.com/bot/images/rm001',
+					'https://pixabay.com/en/background-frame-food-kitchen-cook-1932466/',
 					'alt test',
 					$BaseSize,
 					[$Action1,$Action2]
