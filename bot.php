@@ -11,6 +11,8 @@ use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 use LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
 use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
@@ -78,13 +80,13 @@ if(!is_null($events['events'])) {
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
 				
-				$MessageBuilder = new TemplateMessageBuilder('please confirm on your smartphone.',$Template);
+				$MessageBuilder = new TemplateMessageBuilder('Confirm on your smartphone.',$Template);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'button') !== false){
 				$Message1 = new PostbackTemplateActionBuilder('Postback', 'post=back');
-				$Message2 = new MessageTemplateActionBuilder('message label', 'test message');
-				$Message3 = new UriTemplateActionBuilder('Detail', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
+				$Message2 = new MessageTemplateActionBuilder('message', 'test message');
+				$Message3 = new UriTemplateActionBuilder('Uri', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
 				$Template = new ButtonTemplateBuilder(
 					'template title',
 					'button template',
@@ -92,7 +94,31 @@ if(!is_null($events['events'])) {
 					[$Message1,$Message2,$Message3]
 				);
 				
-				$MessageBuilder = new TemplateMessageBuilder('button template.',$Template);
+				$MessageBuilder = new TemplateMessageBuilder('Button on your smartphone.',$Template);
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
+			}
+			if(strpos($text, 'car') !== false){
+				$Message11 = new PostbackTemplateActionBuilder('Postback1', 'post=back');
+				$Message12 = new MessageTemplateActionBuilder('Message1', 'test message');
+				$Message13 = new UriTemplateActionBuilder('Uri1', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
+				$Column1 = new CarouselColumnTemplateBuilder(
+					'title1',
+					'text1',
+					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg',
+					[$Message11,$Message12,$Message13]
+				);
+				$Message21 = new PostbackTemplateActionBuilder('Postback2', 'post=back');
+				$Message22 = new MessageTemplateActionBuilder('Message2', 'test message');
+				$Message23 = new UriTemplateActionBuilder('Uri2', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
+				$Column2 = new CarouselColumnTemplateBuilder(
+					'title2',
+					'text2',
+					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg',
+					[$Message21,$Message22,$Message23]
+				);
+				$Template = new CarouselTemplateBuilder([$Column1,$Column2]);
+				
+				$MessageBuilder = new TemplateMessageBuilder('Carousel on your smartphone.',$Template);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
 			if(strpos($text, 'map') !== false){
