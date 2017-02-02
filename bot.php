@@ -39,29 +39,29 @@ if(!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			$replyToken = $event['replyToken'];
 			
-			if(strpos($text, 'text') !== false){
+			if(strpos(strtolower($text), 'text') !== false){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'image') !== false){
+			if(strpos(strtolower($text), 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
 					'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg',
 					'https://upload.wikimedia.org/wikipedia/en/6/6d/Pullinger-150x150.jpg'
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'video') !== false){
+			if(strpos(strtolower($text), 'video') !== false){
 				$MessageBuilder = new VideoMessageBuilder(
 					'https://example.com/original.mp4',
 					'https://upload.wikimedia.org/wikipedia/commons/a/ac/Large_format_camera_lens.jpg'
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'audio') !== false){
+			if(strpos(strtolower($text), 'audio') !== false){
 				$MessageBuilder = new AudioMessageBuilder('https://example.com/original.m4a',240000);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'location') !== false){
+			if(strpos(strtolower($text), 'location') !== false){
 				$MessageBuilder = new LocationMessageBuilder(
 					'my location',
 					'Tokyo Shibuya',
@@ -70,11 +70,11 @@ if(!is_null($events['events'])) {
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'sticker') !== false){
+			if(strpos(strtolower($text), 'sticker') !== false){
 				$MessageBuilder = new StickerMessageBuilder(1,1);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos($text, 'confirm') !== false){
+			if(strpos(strtolower($text), 'confirm') !== false){
 				$Message[] = new MessageTemplateActionBuilder('Yes','yes');
 				$Message[] = new MessageTemplateActionBuilder('No','no');
 				$Template = new ConfirmTemplateBuilder('Are you Sure??',$Message);
@@ -82,7 +82,7 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TemplateMessageBuilder('Confirm on your smartphone.',$Template);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
-			if(strpos($text, 'button') !== false){
+			if(strpos(strtolower($text), 'button') !== false){
 				$Message1 = new PostbackTemplateActionBuilder('Postback', 'post=back');
 				$Message2 = new MessageTemplateActionBuilder('message', 'test message');
 				$Message3 = new UriTemplateActionBuilder('Uri', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
@@ -120,7 +120,7 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TemplateMessageBuilder('Carousel on your smartphone.',$Template);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
-			if(strpos($text, 'map') !== false){
+			if(strpos(strtolower($text), 'map') !== false){
 				$AreaUri = new AreaBuilder(0, 0, 1040, 520);
 				$AreaMessage = new AreaBuilder(0, 520, 1040, 520);
 				$Action1 = new ImagemapUriActionBuilder('https://pixabay.com/en/background-frame-food-kitchen-cook-1932466/',$AreaUri);
@@ -135,7 +135,7 @@ if(!is_null($events['events'])) {
 				);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}			
-			if(strpos($text, 'multi') !== false){
+			if(strpos(strtolower($text), 'multi') !== false){
 				$MessageBuilder = (new MultiMessageBuilder())
 					->add(new TextMessageBuilder('text1', 'text2'))
 					->add(new AudioMessageBuilder('https://example.com/audio.mp4', 1000));
