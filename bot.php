@@ -40,7 +40,7 @@ if(!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			if(strpos($text, 'text') !== false){
-				$MessageBuilder = new TextMessageBuilder('Hello!!!');
+				$MessageBuilder = new TextMessageBuilder('Hello...');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
 			if(strpos($text, 'image') !== false){
@@ -96,7 +96,7 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TemplateMessageBuilder('Button on your smartphone.',$Template);
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);				
 			}
-			if(strpos($text, 'car') !== false){
+			if(strpos(strtolower($text), 'car') !== false){
 				$Message11 = new PostbackTemplateActionBuilder('Postback1', 'post=back');
 				$Message12 = new MessageTemplateActionBuilder('Message1', 'test message');
 				$Message13 = new UriTemplateActionBuilder('Uri1', 'https://upload.wikimedia.org/wikipedia/commons/b/b4/JPEG_example_JPG_RIP_100.jpg');
