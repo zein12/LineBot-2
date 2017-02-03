@@ -40,6 +40,10 @@ if(!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			if(strpos(strtolower($text), 'hi') !== false || strpos(strtolower($text), 'hello') !== false){
+				$MessageBuilder = new TextMessageBuilder('Hello!!','How are you?');
+				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+			}
+			if(strpos(strtolower($text), 'fine') !== false || strpos(strtolower($text), 'good') !== false && ((strpos(strtolower($text), 'how') && strpos(strtolower($text), 'are')) || strpos(strtolower($text), 'and')) && strpos(strtolower($text), 'you')){
 				$MessageBuilder = new TextMessageBuilder('Hello...');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
