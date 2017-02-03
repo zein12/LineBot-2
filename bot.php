@@ -43,9 +43,17 @@ if(!is_null($events['events'])) {
 				$MessageBuilder = new TextMessageBuilder('Hello!!','How are you?');
 				$response = $bot->replyMessage($replyToken, $MessageBuilder);
 			}
-			if(strpos(strtolower($text), 'fine') !== false || strpos(strtolower($text), 'good') !== false && ((strpos(strtolower($text), 'how') && strpos(strtolower($text), 'are')) || strpos(strtolower($text), 'and')) && strpos(strtolower($text), 'you')){
-				$MessageBuilder = new TextMessageBuilder('Hello...');
-				$response = $bot->replyMessage($replyToken, $MessageBuilder);
+			if(strpos(strtolower($text), 'fine') !== false || strpos(strtolower($text), 'good') !== false){
+				if(strpos(strtolower($text), 'you')){
+					if((strpos(strtolower($text), 'how') && strpos(strtolower($text), 'are')) || strpos(strtolower($text), 'and')){
+						$MessageBuilder = new TextMessageBuilder("I'm fine.");
+						$response = $bot->replyMessage($replyToken, $MessageBuilder);
+					}
+				}
+				else{
+					$MessageBuilder = new TextMessageBuilder("OK.");
+					$response = $bot->replyMessage($replyToken, $MessageBuilder);
+				}
 			}
 			if(strpos(strtolower($text), 'image') !== false){
 				$MessageBuilder = new ImageMessageBuilder(
