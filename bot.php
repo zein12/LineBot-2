@@ -26,8 +26,8 @@ use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
 $path = __DIR__ . '/vendor/autoload.php';
 require_once $path;
 
-$httpClient = new CurlHTTPClient('7d/5ZTMP4E4lxZDhsIeUFlZrD1I38QFKdZC8V6uBg5Sb4pQ1zbc5KaKbrjnz3XjlKqr2uNyWIObJD92hU0yaLO6AslpPjDyjN258d4oRcwyHP9WsAoEULfZEYr5qhewphqLCr37ewhMUtuIhs1F+twdB04t89/1O/w1cDnyilFU=');
-$bot = new LINEBot($httpClient, ['channelSecret' => 'a787beedee0c166ef92af739d47143e4']);
+$httpClient = new CurlHTTPClient('3/cEBpOR0mjAMUtnHKrSrx3N6FnMVNPYfXBIwMO6HNGaljxuxTxZz2fGrmZYFwqfV3dvAWMa7FEGrmOONfbZ7or1wxYgpjbtFMS0Mkk+RftjvYSrUpThxAHGiivf2M662z2zM5P8BSKby0dJiBG3GQdB04t89/1O/w1cDnyilFU=');
+$bot = new LINEBot($httpClient, ['channelSecret' => 'a6b4b1a80d9f25eb0a719fc92cef7d86']);
 
 $postdata = file_get_contents("php://input");
 // Parse JSON
